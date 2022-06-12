@@ -27,8 +27,8 @@ public class ProductController {
 	private ProductService productService;
 
 	@PostMapping
-	public ResponseEntity<String> createUser(@RequestBody ProductDto product) {
-		logger.debug("createUser - 호출");
+	public ResponseEntity<String> createProduct(@RequestBody ProductDto product) {
+		logger.debug("createProduct - 호출");
 		if (productService.createProduct(product)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
@@ -36,8 +36,8 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("{no}")
-	public ResponseEntity<String> deleteBoard(@PathVariable int no) throws Exception {
-		logger.debug("deleteBoard - 호출");
+	public ResponseEntity<String> deleteProduct(@PathVariable int no) throws Exception {
+		logger.debug("deleteProduct - 호출");
 		if (productService.deleteProduct(no)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}

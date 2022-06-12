@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "PromotionDto : 행사 정보", description = "행사의 상세 정보를 나타낸다.")
-public class PromtionDto {
+public class PromotionDto {
 
 	@ApiModelProperty(value = "고유 번호")
 	private int promotionId;
@@ -30,7 +30,7 @@ public class PromtionDto {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date promotionEndDate;
 
-	public PromtionDto(int promotionId, String promotionNm, String discountAmount, String discountRate,
+	public PromotionDto(int promotionId, String promotionNm, String discountAmount, String discountRate,
 			Date promotionStartDate, Date promotionEndDate) {
 		super();
 		this.promotionId = promotionId;
