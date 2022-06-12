@@ -2,6 +2,8 @@ package com.shopping.api.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -20,10 +22,12 @@ public class PromtionDto {
 	@ApiModelProperty(value = "할인 비율")
 	private String discountRate;
 
-	@ApiModelProperty(value = "행사 시작일", example = "2022/06/11")
+	@ApiModelProperty(value = "행사 시작일", example = "2022-06-11")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date promotionStartDate;
 
-	@ApiModelProperty(value = "행사 시작일", example = "2022/06/11")
+	@ApiModelProperty(value = "행사 시작일", example = "2022-06-11")	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date promotionEndDate;
 
 	public PromtionDto(int promotionId, String promotionNm, String discountAmount, String discountRate,

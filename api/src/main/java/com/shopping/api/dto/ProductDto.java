@@ -22,12 +22,12 @@ public class ProductDto {
 	@ApiModelProperty(value = "제품 가격")
 	private int itemPrice;
 	
-	@ApiModelProperty(value = "제품 표시 시작일", example = "2022/06/11")
-	@JsonFormat(pattern = "yyyy/MM/dd")
+	@ApiModelProperty(value = "제품 표시 시작일", example = "2022-06-11")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date itemDisplayStartDate;
 	
-	@ApiModelProperty(value = "제품 표시 종료일", example = "2022/06/11")
-	@JsonFormat(pattern = "yyyy/MM/dd")
+	@ApiModelProperty(value = "제품 표시 종료일", example = "2022-06-11")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date itemDisplayEndDate;
 
 	public ProductDto(int itemId, String itemName, String itemType, int itemPrice, Date itemDisplayStartDate,
