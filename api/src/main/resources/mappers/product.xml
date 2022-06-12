@@ -10,6 +10,31 @@
 			#{itemName}, #{itemType}, #{itemPrice}, #{itemDisplayStartDate}, #{itemDisplayEndDate}
 		)
 	</insert>
+		
+	<select id="readProduct" parameterType="int"  resultType="productPromotionDto">
+		select *, if(
+			if(
+				isnull(pm.discountAmount),
+				( pd.itemPrice - (pd.itemPrice*pm.discountRate)), 
+		        pd.itemPrice - pm.discountAmount
+			) &lt;= 0, 
+		    pd.itemPrice,
+		    if(
+				isnull(pm.discountAmount),
+				( pd.itemPrice - (pd.itemPrice*pm.discountRate)), 
+				pd.itemPrice - pm.discountAmount
+		    )
+		) as itemDiscountPrice 
+		from promotionitem pi
+		join product pd
+		on pi.itemId = pd.itemid 
+		join promotion pm
+		on pi.promotionId = pm.promotionId
+		where pd.itemId = #{no}
+		and (now() between pm.promotionStartDate and pm.promotionEndDate)
+		order by itemDiscountPrice
+		limit 1;
+	</select>
 	
 	<delete id="deleteProduct" parameterType="int">
 		delete
