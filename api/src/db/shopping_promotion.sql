@@ -16,32 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `orderinfo`
+-- Table structure for table `promotion`
 --
 
-DROP TABLE IF EXISTS `orderinfo`;
+DROP TABLE IF EXISTS `promotion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderinfo` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userId` int NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `orderState` varchar(100) NOT NULL,
-  `deliveryCost` int NOT NULL,
-  `orderDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `userId` (`userId`),
-  CONSTRAINT `orderinfo_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `promotion` (
+  `promotionId` int NOT NULL AUTO_INCREMENT,
+  `promotionNm` varchar(20) DEFAULT NULL,
+  `discountAmount` int DEFAULT NULL,
+  `discountRate` float DEFAULT NULL,
+  `promotionStartDate` date NOT NULL,
+  `promotionEndDate` date NOT NULL,
+  PRIMARY KEY (`promotionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orderinfo`
+-- Dumping data for table `promotion`
 --
 
-LOCK TABLES `orderinfo` WRITE;
-/*!40000 ALTER TABLE `orderinfo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderinfo` ENABLE KEYS */;
+LOCK TABLES `promotion` WRITE;
+/*!40000 ALTER TABLE `promotion` DISABLE KEYS */;
+INSERT INTO `promotion` VALUES (1,'2022 쓱데이',1000,NULL,'2022-05-01','2022-07-01'),(2,'스타벅스몰 오픈기념',NULL,0.5,'2021-01-05','2022-12-31'),(3,'2021 쓱데이',2000,NULL,'2021-01-01','2021-01-31');
+/*!40000 ALTER TABLE `promotion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-02  0:30:52
+-- Dump completed on 2022-06-12 22:27:22

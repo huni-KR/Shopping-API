@@ -16,33 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `orderitem`
+-- Table structure for table `promotionitem`
 --
 
-DROP TABLE IF EXISTS `orderitem`;
+DROP TABLE IF EXISTS `promotionitem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderitem` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `orderId` int NOT NULL,
-  `productId` int NOT NULL,
-  `productPrice` int NOT NULL,
-  `productCount` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `orderId` (`orderId`),
-  KEY `productId` (`productId`),
-  CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `orderinfo` (`id`),
-  CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`id`)
+CREATE TABLE `promotionitem` (
+  `promotionId` int DEFAULT NULL,
+  `itemId` int DEFAULT NULL,
+  KEY `promotionId` (`promotionId`),
+  KEY `itemId` (`itemId`),
+  CONSTRAINT `promotionitem_ibfk_1` FOREIGN KEY (`promotionId`) REFERENCES `promotion` (`promotionId`),
+  CONSTRAINT `promotionitem_ibfk_2` FOREIGN KEY (`itemId`) REFERENCES `product` (`itemId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orderitem`
+-- Dumping data for table `promotionitem`
 --
 
-LOCK TABLES `orderitem` WRITE;
-/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
+LOCK TABLES `promotionitem` WRITE;
+/*!40000 ALTER TABLE `promotionitem` DISABLE KEYS */;
+INSERT INTO `promotionitem` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(2,4),(3,1),(3,2),(3,3);
+/*!40000 ALTER TABLE `promotionitem` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-02  0:30:52
+-- Dump completed on 2022-06-12 22:27:22
