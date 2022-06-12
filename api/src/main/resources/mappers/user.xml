@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shopping.api.mapper.UserMapper">
-	
 	<insert id="createUser" parameterType="userDto">
 		insert into user (
 			userName, userType, userStat
@@ -10,6 +9,24 @@
 			#{userName}, #{userType}, #{userType} 
 		)
 	</insert>
+	
+	<select id="readUser" parameterType="int"  resultType="productDto">
+		select * 
+		from  product p 
+		where if( 
+			(		
+				select userType
+				from user
+				where userId = #{no}
+			) = '일반',
+		    p.itemType like '%일반%' ,
+		    p.itemType like '%일반%' or p.itemType like '%기업%'
+		)
+		and (select userStat
+				from user
+				where userId = #{no}) = '정상'
+		and (now() between itemDisplayStartDate and itemDisplayEndDate);
+	</select>
 	
 	<delete id="deleteUser" parameterType="int">
 		delete
