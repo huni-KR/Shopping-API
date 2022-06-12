@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shopping.api.dto.PromotionDto;
 import com.shopping.api.service.PromotionService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/promotion")
 public class PromotionController {
@@ -27,6 +29,7 @@ public class PromotionController {
 	private PromotionService promotionService;
 
 	@PostMapping
+	@ApiOperation(value="프로모션 생성", notes="프로모션을 생성한다.")
 	public ResponseEntity<String> createPromotion(@RequestBody PromotionDto promotion) {
 		logger.debug("createPromotion - 호출");
 		if (promotionService.createPromotion(promotion)) {
@@ -36,6 +39,7 @@ public class PromotionController {
 	}
 	
 	@DeleteMapping("{no}")
+	@ApiOperation(value="프로모션 삭제", notes="프로모션을 삭제한다.")
 	public ResponseEntity<String> deletePromotion(@PathVariable int no) throws Exception {
 		logger.debug("deletePromotion- 호출");
 		if (promotionService.deletePromotion(no)) {
