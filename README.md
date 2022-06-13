@@ -1,3 +1,14 @@
+## Project Github
+- [Github Link](https://github.com/huni-KR/Shopping-API)
+---
+## Framework & Database
+![image](https://taetaetae.github.io/images/spring-boot-mybatis-mysql-xml/logo.jpg)
+
+---
+## URL Info - [Swagger](http://localhost:8080/swagger-ui/index.html)
+![image](https://user-images.githubusercontent.com/58337647/173273958-b0646efb-047e-4325-bdae-71db74715383.png)
+
+---
 ## [Github Commit Message Rule](https://junhyunny.github.io/information/github/git-commit-message-rule/)
 
         타입(Type): 제목(Subject)
