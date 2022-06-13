@@ -32,7 +32,8 @@ public class PromotionController {
 	@ApiOperation(value="프로모션 생성", notes="프로모션을 생성한다.")
 	public ResponseEntity<String> createPromotion(@RequestBody PromotionDto promotion) {
 		logger.debug("createPromotion - 호출");
-		if (promotionService.createPromotion(promotion)) {
+		if (promotionService.nameCheck(promotion.getPromotionNm()) == 0) {
+			promotionService.createPromotion(promotion);
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
@@ -42,9 +43,7 @@ public class PromotionController {
 	@ApiOperation(value="프로모션 삭제", notes="프로모션을 삭제한다.")
 	public ResponseEntity<String> deletePromotion(@PathVariable int no) throws Exception {
 		logger.debug("deletePromotion- 호출");
-		if (promotionService.deletePromotion(no)) {
-			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
-		}
-		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+		promotionService.deletePromotion(no);
+		return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 	}
 }

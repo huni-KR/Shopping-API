@@ -17,26 +17,31 @@ public class PromotionDto {
 	private String promotionNm;
 
 	@ApiModelProperty(value = "할인 금액")
-	private String discountAmount;
+	private int discountAmount;
 
 	@ApiModelProperty(value = "할인 비율")
-	private String discountRate;
+	private double discountRate;
 
 	@ApiModelProperty(value = "행사 시작일", example = "2022-06-11")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date promotionStartDate;
 
-	@ApiModelProperty(value = "행사 시작일", example = "2022-06-11")	
+	@ApiModelProperty(value = "행사 시작일", example = "2022-06-11")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date promotionEndDate;
+	
+	public PromotionDto() {}
 
-	public PromotionDto(int promotionId, String promotionNm, String discountAmount, String discountRate,
-			Date promotionStartDate, Date promotionEndDate) {
-		super();
-		this.promotionId = promotionId;
+	public PromotionDto(String promotionNm, double discountRate, Date promotionStartDate, Date promotionEndDate) {
+		this.promotionNm = promotionNm;
+		this.discountRate = discountRate;
+		this.promotionStartDate = promotionStartDate;
+		this.promotionEndDate = promotionEndDate;
+	}
+
+	public PromotionDto(String promotionNm, int discountAmount, Date promotionStartDate, Date promotionEndDate) {
 		this.promotionNm = promotionNm;
 		this.discountAmount = discountAmount;
-		this.discountRate = discountRate;
 		this.promotionStartDate = promotionStartDate;
 		this.promotionEndDate = promotionEndDate;
 	}
@@ -57,19 +62,19 @@ public class PromotionDto {
 		this.promotionNm = promotionNm;
 	}
 
-	public String getDiscountAmount() {
+	public int getDiscountAmount() {
 		return discountAmount;
 	}
 
-	public void setDiscountAmount(String discountAmount) {
+	public void setDiscountAmount(int discountAmount) {
 		this.discountAmount = discountAmount;
 	}
 
-	public String getDiscountRate() {
+	public double getDiscountRate() {
 		return discountRate;
 	}
 
-	public void setDiscountRate(String discountRate) {
+	public void setDiscountRate(double discountRate) {
 		this.discountRate = discountRate;
 	}
 

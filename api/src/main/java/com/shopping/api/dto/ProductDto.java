@@ -30,10 +30,10 @@ public class ProductDto {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date itemDisplayEndDate;
 
-	public ProductDto(int itemId, String itemName, String itemType, int itemPrice, Date itemDisplayStartDate,
+	public ProductDto() {}
+	
+	public ProductDto(String itemName, String itemType, int itemPrice, Date itemDisplayStartDate,
 			Date itemDisplayEndDate) {
-		super();
-		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemType = itemType;
 		this.itemPrice = itemPrice;

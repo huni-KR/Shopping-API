@@ -14,4 +14,6 @@ public interface UserMapper {
 	public List<ProductDto> readUser(int no);
 	
 	public int deleteUser(int no);
+
+	public int nameCheck(String userName);
 }

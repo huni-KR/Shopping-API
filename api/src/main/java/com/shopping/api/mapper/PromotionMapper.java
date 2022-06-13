@@ -9,4 +9,6 @@ public interface PromotionMapper {
 	public int createPromotion(PromotionDto promotion);
 
 	public int deletePromotion(int no);
+
+	public int nameCheck(String name);
 }

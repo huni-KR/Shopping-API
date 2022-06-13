@@ -17,10 +17,10 @@ public class UserDto {
 	
 	@ApiModelProperty(value = "상태")
 	private String userStat;
-
-	public UserDto(int userId, String userName, String userType, String userStat) {
-		super();
-		this.userId = userId;
+	
+	public UserDto() {}
+	
+	public UserDto(String userName, String userType, String userStat) {
 		this.userName = userName;
 		this.userType = userType;
 		this.userStat = userStat;

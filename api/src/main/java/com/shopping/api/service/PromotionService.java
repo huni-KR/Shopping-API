@@ -3,7 +3,9 @@ package com.shopping.api.service;
 import com.shopping.api.dto.PromotionDto;
 
 public interface PromotionService {
-	public boolean createPromotion(PromotionDto promotion);
+	public void createPromotion(PromotionDto promotion);
 
-	public boolean deletePromotion(int no);
+	public void deletePromotion(int no);
+	
+	public int nameCheck(String name);
 }

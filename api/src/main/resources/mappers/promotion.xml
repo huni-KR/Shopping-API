@@ -2,12 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shopping.api.mapper.PromotionMapper">
+	<select id="nameCheck" parameterType="string" resultType="int">
+		select count(promotionNm)
+		from promotion
+		where promotionNm = #{promotionNm}
+	</select>
 	
 	<insert id="createPromotion" parameterType="promotionDto">
 		insert into promotion (
-			promotionNm, discountRate, promotionStartDate, promotionEndDate
+			promotionNm, discountAmount,discountRate, promotionStartDate, promotionEndDate
 		) values ( 
-			#{promotionNm}, #{discountRate}, #{promotionStartDate}, #{promotionEndDate}
+			#{promotionNm}, #{discountAmount}, #{discountRate}, #{promotionStartDate}, #{promotionEndDate}
 		)
 	</insert>
 	

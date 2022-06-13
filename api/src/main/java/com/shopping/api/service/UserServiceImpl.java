@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public boolean createUser(UserDto user) {
-		return userMapper.createUser(user) == 1;
+	public void createUser(UserDto user) {
+		userMapper.createUser(user);
 	}
 	
 	@Override
@@ -26,7 +26,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean deleteUser(int no) {
-		return userMapper.deleteUser(no) == 1;
+	public void deleteUser(int no) {
+		userMapper.deleteUser(no);
+	}
+
+	@Override
+	public int nameCheck(String userName) {
+		return userMapper.nameCheck(userName);
 	}
 }

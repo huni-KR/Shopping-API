@@ -33,29 +33,31 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping
-	@ApiOperation(value="유저 생성", notes="유저을 생성한다.")
+	@ApiOperation(value = "유저 생성", notes = "유저을 생성한다.")
 	public ResponseEntity<String> createUser(@RequestBody UserDto userDto) {
 		logger.debug("createUser - 호출");
-		if (userService.createUser(userDto)) {
+		if (userService.nameCheck(userDto.getUserName()) == 0) {
+			logger.debug("Http Code : 200");
+			userService.createUser(userDto);
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+		} else {
+			logger.debug("Http Code : 204");
+			return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 
 	@GetMapping("{no}")
-	@ApiOperation(value="유저 구매 가능 제품 조회", notes="유저가 구매 가능 제품을 조회을 조회한다.")
+	@ApiOperation(value = "유저 구매 가능 제품 조회", notes = "유저가 구매 가능 제품을 조회을 조회한다.")
 	public ResponseEntity<List<ProductDto>> readUser(@PathVariable int no) throws Exception {
 		logger.debug("readUser - 호출");
 		return new ResponseEntity<List<ProductDto>>(userService.readUser(no), HttpStatus.OK);
 	}
 
 	@DeleteMapping("{no}")
-	@ApiOperation(value="유저 삭제", notes="유저을 삭제한다.")
+	@ApiOperation(value = "유저 삭제", notes = "유저을 삭제한다.")
 	public ResponseEntity<String> deleteUser(@PathVariable int no) throws Exception {
 		logger.debug("deleteUser - 호출");
-		if (userService.deleteUser(no)) {
-			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
-		}
-		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+		userService.deleteUser(no);
+		return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 	}
 }

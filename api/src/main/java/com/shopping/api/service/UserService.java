@@ -6,9 +6,11 @@ import com.shopping.api.dto.ProductDto;
 import com.shopping.api.dto.UserDto;
 
 public interface UserService {
-	public boolean createUser(UserDto user);
+	public void createUser(UserDto user);
 	
 	public List<ProductDto> readUser(int no);
 
-	public boolean deleteUser(int no);
+	public void deleteUser(int no);
+
+	public int nameCheck(String userName);
 }

@@ -13,13 +13,18 @@ public class PromotionServiceImpl implements PromotionService {
 	private PromotionMapper promotionMapper;
 
 	@Override
-	public boolean createPromotion(PromotionDto promotion) {
-		return promotionMapper.createPromotion(promotion) == 1;
+	public void createPromotion(PromotionDto promotion) {
+		promotionMapper.createPromotion(promotion);
 	}
 
 	@Override
-	public boolean deletePromotion(int no) {
-		return promotionMapper.deletePromotion(no) == 1;
+	public void deletePromotion(int no) {
+		promotionMapper.deletePromotion(no);
+	}
+
+	@Override
+	public int nameCheck(String name) {
+		return promotionMapper.nameCheck(name);
 	}
 
 }

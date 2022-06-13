@@ -13,7 +13,6 @@ public class PromotionItemDto {
 	private int itemId;
 
 	public PromotionItemDto(int promotionId, int itemId) {
-		super();
 		this.promotionId = promotionId;
 		this.itemId = itemId;
 	}
