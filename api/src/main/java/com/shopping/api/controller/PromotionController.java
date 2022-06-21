@@ -34,7 +34,7 @@ public class PromotionController {
 		logger.debug("createPromotion - 호출");
 		if (promotionService.nameCheck(promotion.getPromotionNm()) == 0) {
 			promotionService.createPromotion(promotion);
-			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}

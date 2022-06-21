@@ -39,7 +39,7 @@ public class UserController {
 		if (userService.nameCheck(userDto.getUserName()) == 0) {
 			logger.debug("Http Code : 200");
 			userService.createUser(userDto);
-			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
+			return new ResponseEntity<String>(SUCCESS, HttpStatus.CREATED);
 		} else {
 			logger.debug("Http Code : 204");
 			return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);

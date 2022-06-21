@@ -14,6 +14,10 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
+	
+	public UserServiceImpl(UserMapper userMapper) {
+		this.userMapper = userMapper;
+	}
 
 	@Override
 	public void createUser(UserDto user) {
